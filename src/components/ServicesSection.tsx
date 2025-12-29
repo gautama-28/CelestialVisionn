@@ -14,6 +14,7 @@ const services = [
     features: ['Strategic Career Guidance', 'Transition Navigation', 'Personal Growth Focus'],
     duration: '60 min',
     price: '₹ 900',
+    image: '/tarotcard.png',
   },
   {
     icon: Gem,
@@ -23,6 +24,7 @@ const services = [
     features: ['Custom Stone Selection', 'Workspace Design', 'Home Harmonization'],
     duration: '90 min',
     price: '₹ 1200',
+    image: '/crystalcard.png',
   },
 ];
 
@@ -63,6 +65,15 @@ export function ServicesSection() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="group relative bg-cream rounded-2xl border border-border p-8 md:p-10 hover:shadow-medium transition-all duration-500 overflow-hidden"
             >
+              {/* Tarot Card Image */}
+              <div className="absolute md:-top-6 md:-right-6 w-32 h-44 md:w-48 md:h-64 opacity-40 group-hover:opacity-60 transition-opacity duration-300">
+                <img 
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
               {/* Icon */}
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg bg-sage/20 text-forest mb-6 group-hover:bg-forest group-hover:text-cream transition-all duration-300">
                 <service.icon size={28} />
@@ -103,7 +114,7 @@ export function ServicesSection() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-forest hover:text-gold group/btn"
+                  className="text-forest hover:text-white hover:bg-gold group/btn"
                   onClick={() => navigate('/book')}
                 >
                   Book
