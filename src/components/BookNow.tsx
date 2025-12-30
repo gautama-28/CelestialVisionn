@@ -178,6 +178,11 @@ export function BookNow() {
                           placeholder="Your Email"
                           className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all text-sm"
                         />
+                        <input
+                          type="tel"
+                          placeholder="Your Phone Number"
+                          className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all text-sm"
+                        />
                       </div>
 
                       <motion.div

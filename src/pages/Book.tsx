@@ -1,38 +1,81 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon, X, ShoppingCart } from 'lucide-react';
 
-const services = [
-  { id: 'tarot', title: 'Tarot Reading', duration: '60 min', price: '₹ 900' },
-  { id: 'crystal', title: 'Crystal Consultation', duration: '90 min', price: '₹ 1200' },
+const tarotMinutesSessions = [
+  { id: 'tarot-15', title: 'Tarot Reading - 15 min', duration: '15 min', price: 1100, description: 'Quick clarity session' },
+  { id: 'tarot-30', title: 'Tarot Reading - 30 min', duration: '30 min', price: 2500, description: 'In-depth exploration' },
+  { id: 'tarot-45', title: 'Tarot Reading - 45 min', duration: '45 min', price: 4100, description: 'Comprehensive reading' },
 ];
+
+const tarotQuestionsSessions = [
+  { id: 'tarot-1q', title: 'Tarot Reading - 1 Question', questions: '1 Question', price: 333, description: 'Detailed single question reading' },
+  { id: 'tarot-3q', title: 'Tarot Reading - 3 Questions', questions: '3 Questions', price: 1100, description: 'Multi-question deep dive' },
+];
+
+const crystalService = {
+  id: 'crystal',
+  title: 'Crystal Consultation',
+  duration: '90 min',
+  price: 2500,
+  description: 'Custom gemstone pairing and energetic architecture',
+};
 
 const timeSlots = ['10:00 AM','11:00 AM','2:00 PM','3:00 PM','4:00 PM','5:00 PM'];
 
+type SelectedService = {
+  id: string;
+  title: string;
+  price: number;
+  details: string;
+};
+
 export default function Book() {
-  const [selectedService, setSelectedService] = useState<string>(services[0].id);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [selectedServices, setSelectedServices] = useState<SelectedService[]>(() => {
+    return location.state?.preSelectedServices || [];
+  });
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [tarotTab, setTarotTab] = useState<'minutes' | 'questions'>(() => {
+    return location.state?.activeTab || 'minutes';
+  });
+
+  const addService = (service: SelectedService) => {
+    // Check if service already exists
+    if (!selectedServices.find(s => s.id === service.id)) {
+      setSelectedServices([...selectedServices, service]);
+    }
+  };
+
+  const removeService = (id: string) => {
+    setSelectedServices(selectedServices.filter(s => s.id !== id));
+  };
+
+  const totalPrice = selectedServices.reduce((sum, service) => sum + service.price, 0);
 
   return (
     <div className="min-h-screen bg-cream">
       {/* Logo */}
-      <motion.div
+      <motion.button
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="absolute top-6 left-3 md:top-4 md:left-8 lg:left-16 z-10"
+        className="absolute top-6 left-3 md:top-4 md:left-8 lg:left-16 z-10 p-0 border-0 bg-transparent hover:opacity-80 transition-opacity"
+        onClick={() => navigate('/')}
       >
         <img
           src="/CelestialVisonnLogoDark.png"
           alt="Celestial Visonn Logo"
-          className="h-8 sm:h-12 md:h-16 w-auto object-contain"
+          className="h-8 sm:h-12 md:h-16 w-auto object-contain cursor-pointer"
         />
-      </motion.div>
+      </motion.button>
 
       <main className="section-padding">
         <div className="container-narrow">
@@ -56,37 +99,163 @@ export default function Book() {
 
           {/* Form Layout */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left: Service + Date/Time */}
+            {/* Left: Service Selection + Date/Time */}
             <div className="space-y-8">
-              {/* Services */}
+              {/* Tarot Reading Services */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="bg-cream rounded-2xl border border-border p-6"
               >
-                <h2 className="font-heading text-xl text-forest mb-4">Select a Service</h2>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {services.map((svc) => (
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      key={svc.id}
-                      onClick={() => setSelectedService(svc.id)}
-                      className={`text-left p-4 rounded-xl border transition-all ${
-                        selectedService === svc.id
-                          ? 'border-gold bg-gold/5'
-                          : 'border-border hover:border-gold hover:bg-gold/5'
-                      }`}
-                    >
-                      <div className="flex items-start justify-between">
-                        <h3 className="font-heading text-forest">{svc.title}</h3>
-                        <span className="font-heading text-gold">{svc.price}</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground mt-1">{svc.duration}</p>
-                    </motion.button>
-                  ))}
+                <h2 className="font-heading text-xl text-forest mb-4">Tarot Reading</h2>
+                
+                {/* Tab Switcher */}
+                <div className="flex bg-cream-dark rounded-lg p-1 mb-4">
+                  <button
+                    onClick={() => setTarotTab('minutes')}
+                    className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
+                      tarotTab === 'minutes'
+                        ? 'bg-forest text-white shadow-sm'
+                        : 'text-muted-foreground hover:text-forest'
+                    }`}
+                  >
+                    By Duration
+                  </button>
+                  <button
+                    onClick={() => setTarotTab('questions')}
+                    className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
+                      tarotTab === 'questions'
+                        ? 'bg-forest text-white shadow-sm'
+                        : 'text-muted-foreground hover:text-forest'
+                    }`}
+                  >
+                    By Questions
+                  </button>
                 </div>
+
+                {/* Tarot Options */}
+                <div className="space-y-2">
+                  {tarotTab === 'minutes' ? (
+                    tarotMinutesSessions.map((session) => (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        key={session.id}
+                        onClick={() => addService({
+                          id: session.id,
+                          title: session.title,
+                          price: session.price,
+                          details: session.duration
+                        })}
+                        disabled={selectedServices.some(s => s.id === session.id)}
+                        className={`w-full text-left p-4 rounded-xl border transition-all ${
+                          selectedServices.some(s => s.id === session.id)
+                            ? 'border-gold bg-gold/10 cursor-not-allowed'
+                            : 'border-border hover:border-gold hover:bg-gold/5'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h3 className="font-heading text-forest text-sm">{session.duration}</h3>
+                            <p className="text-xs text-muted-foreground">{session.description}</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-heading text-tarot-terracotta">₹{session.price}</span>
+                            {selectedServices.some(s => s.id === session.id) && (
+                              <div className="w-5 h-5 rounded-full bg-gold flex items-center justify-center">
+                                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </motion.button>
+                    ))
+                  ) : (
+                    tarotQuestionsSessions.map((session) => (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        key={session.id}
+                        onClick={() => addService({
+                          id: session.id,
+                          title: session.title,
+                          price: session.price,
+                          details: session.questions
+                        })}
+                        disabled={selectedServices.some(s => s.id === session.id)}
+                        className={`w-full text-left p-4 rounded-xl border transition-all ${
+                          selectedServices.some(s => s.id === session.id)
+                            ? 'border-gold bg-gold/10 cursor-not-allowed'
+                            : 'border-border hover:border-gold hover:bg-gold/5'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h3 className="font-heading text-forest text-sm">{session.questions}</h3>
+                            <p className="text-xs text-muted-foreground">{session.description}</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-heading text-tarot-terracotta">₹{session.price}</span>
+                            {selectedServices.some(s => s.id === session.id) && (
+                              <div className="w-5 h-5 rounded-full bg-gold flex items-center justify-center">
+                                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </motion.button>
+                    ))
+                  )}
+                </div>
+              </motion.div>
+
+              {/* Crystal Consultation */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.25 }}
+                className="bg-cream rounded-2xl border border-border p-6"
+              >
+                <h2 className="font-heading text-xl text-forest mb-4">Crystal Consultation</h2>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => addService({
+                    id: crystalService.id,
+                    title: crystalService.title,
+                    price: crystalService.price,
+                    details: crystalService.duration
+                  })}
+                  disabled={selectedServices.some(s => s.id === crystalService.id)}
+                  className={`w-full text-left p-4 rounded-xl border transition-all ${
+                    selectedServices.some(s => s.id === crystalService.id)
+                      ? 'border-gold bg-gold/10 cursor-not-allowed'
+                      : 'border-border hover:border-gold hover:bg-gold/5'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-heading text-forest">{crystalService.title}</h3>
+                      <p className="text-sm text-muted-foreground">{crystalService.duration}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{crystalService.description}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-heading text-tarot-terracotta">₹{crystalService.price}</span>
+                      {selectedServices.some(s => s.id === crystalService.id) && (
+                        <div className="w-5 h-5 rounded-full bg-gold flex items-center justify-center">
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.button>
               </motion.div>
 
               {/* Date */}
@@ -149,12 +318,62 @@ export default function Book() {
               </motion.div>
             </div>
 
-            {/* Right: Details */}
+            {/* Right: Summary + Details */}
             <div className="space-y-8">
+              {/* Cart Summary */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
+                className="bg-cream rounded-2xl border border-border p-6"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <ShoppingCart size={20} className="text-gold" />
+                  <h2 className="font-heading text-xl text-forest">Your Selection</h2>
+                </div>
+                
+                {selectedServices.length === 0 ? (
+                  <p className="text-sm text-muted-foreground text-center py-6">
+                    No services selected yet. Choose from the options on the left.
+                  </p>
+                ) : (
+                  <div className="space-y-3">
+                    {selectedServices.map((service) => (
+                      <div
+                        key={service.id}
+                        className="flex items-start justify-between p-4 bg-cream-dark/50 rounded-lg border border-gold/30"
+                      >
+                        <div className="flex-1 pr-4">
+                          <h3 className="font-heading text-forest text-sm leading-tight">{service.title}</h3>
+                          <p className="text-xs text-muted-foreground mt-1">{service.details}</p>
+                        </div>
+                        <div className="flex items-start justify-between gap-2 flex-shrink-0">
+                          <span className="font-heading text-tarot-terracotta text-sm whitespace-nowrap">₹{service.price}</span>
+                          <button
+                            onClick={() => removeService(service.id)}
+                            className="p-1 hover:bg-sage/10 rounded transition-colors flex-shrink-0"
+                          >
+                            <X size={16} className="text-muted-foreground hover:text-forest" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                    
+                    {/* Total */}
+                    <div className="pt-4 mt-4 border-t border-border/50">
+                      <div className="flex items-center justify-between">
+                        <span className="font-heading text-forest text-lg">Total</span>
+                        <span className="font-heading text-tarot-terracotta text-2xl">₹{totalPrice.toLocaleString('en-IN')}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
                 className="bg-cream rounded-2xl border border-border p-6"
               >
                 <h2 className="font-heading text-xl text-forest mb-4">Your Details</h2>
@@ -167,6 +386,11 @@ export default function Book() {
                   <input
                     type="email"
                     placeholder="Your Email"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/40 transition-all text-sm"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Your Phone Number"
                     className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/40 transition-all text-sm"
                   />
                 </div>
@@ -191,8 +415,11 @@ export default function Book() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
               >
-                <Button className="w-full bg-forest hover:bg-forest/90 text-cream font-heading rounded-lg">
-                  Confirm Booking
+                <Button 
+                  className="w-full bg-forest hover:bg-forest/90 text-cream font-heading rounded-lg"
+                  disabled={selectedServices.length === 0}
+                >
+                  Confirm Booking {selectedServices.length > 0 && `(₹${totalPrice})`}
                 </Button>
               </motion.div>
             </div>
