@@ -28,72 +28,128 @@ const PrivacyPolicy = () => {
 
             <div className="prose prose-lg max-w-none font-body text-muted-foreground space-y-8">
               <p className="text-lg leading-relaxed">
-                Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                <strong className="text-foreground">Celestial Visionn | Tarot & Crystal Healing Services</strong> is owned and operated by <strong className="text-foreground">Mansi Saxena</strong>, who acts as the data controller of your personal information.
+              </p>
+
+              <p className="text-lg leading-relaxed">
+                We have adopted this Privacy Policy, which explains how we collect, use, protect, and process the personal data provided by users of Celestial Visionn. By using our website, you agree to the collection and use of information in accordance with this policy. We deeply value your trust and are committed to safeguarding your personal information with the highest standards of confidentiality and security.
               </p>
 
               <section className="space-y-4">
                 <h2 className="font-heading text-2xl text-foreground">1. Information We Collect</h2>
-                <p>
-                  At The Verdant Oracle, we collect information you provide directly to us, including your name, 
-                  email address, and any other information you choose to provide when booking a consultation 
-                  or contacting us.
-                </p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="font-heading text-lg text-foreground mb-2">Device Information</h3>
+                    <p>
+                      When you visit the Celestial Visionn website, certain information is collected automatically, including:
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2 mt-2">
+                      <li>Device information (browser type, IP address, time zone)</li>
+                      <li>Cookies and usage data</li>
+                      <li>Pages viewed, time spent, and referral sources</li>
+                      <li>Interaction patterns on the website</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="font-heading text-lg text-foreground mb-2">Voluntarily Provided Information</h3>
+                    <p>
+                      Additionally, when you choose to use our services or communicate with us, we may collect personal data you voluntarily provide, including but not limited to:
+                    </p>
+                    <ul className="list-disc pl-6 space-y-2 mt-2">
+                      <li>Full Name</li>
+                      <li>Email Address</li>
+                      <li>Phone Number</li>
+                      <li>City / Country</li>
+                      <li>Payment and transaction details</li>
+                      <li>Any information shared during consultations or inquiries</li>
+                    </ul>
+                  </div>
+                </div>
               </section>
 
               <section className="space-y-4">
                 <h2 className="font-heading text-2xl text-foreground">2. How We Use Your Information</h2>
-                <p>We use the information we collect to:</p>
+                <p>
+                  Your data is processed strictly for legitimate and necessary purposes, including:
+                </p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Provide, maintain, and improve our services</li>
-                  <li>Process transactions and send related information</li>
-                  <li>Send you technical notices and support messages</li>
-                  <li>Respond to your comments and questions</li>
-                  <li>Send promotional communications (with your consent)</li>
+                  <li>Delivering Tarot and Crystal Healing services</li>
+                  <li>Managing bookings and communication</li>
+                  <li>Improving website performance and user experience</li>
+                  <li>Maintaining website security and preventing misuse</li>
+                  <li>Fulfilling legal and regulatory requirements</li>
                 </ul>
-              </section>
-
-              <section className="space-y-4">
-                <h2 className="font-heading text-2xl text-foreground">3. Information Sharing</h2>
-                <p>
-                  We do not sell, trade, or otherwise transfer your personal information to outside parties. 
-                  This does not include trusted third parties who assist us in operating our website, 
-                  conducting our business, or servicing you.
+                <p className="italic text-sm text-muted-foreground">
+                  We collect only the minimum data required to provide our services effectively.
                 </p>
               </section>
 
               <section className="space-y-4">
-                <h2 className="font-heading text-2xl text-foreground">4. Data Security</h2>
+                <h2 className="font-heading text-2xl text-foreground">3. Your Choices & Access</h2>
                 <p>
-                  We implement appropriate security measures to protect your personal information. However, 
-                  no method of transmission over the Internet is 100% secure, and we cannot guarantee 
-                  absolute security.
+                  You may browse the website without revealing personal identity. However, some features such as consultations, bookings, newsletters, or contact forms require personal information. If you choose not to provide certain details, some services may not be accessible.
+                </p>
+                <p className="italic text-sm text-muted-foreground">
+                  For any clarification regarding required information, you may contact us at <strong>celestialvisionn@gmail.com</strong>
                 </p>
               </section>
 
               <section className="space-y-4">
-                <h2 className="font-heading text-2xl text-foreground">5. Cookies</h2>
+                <h2 className="font-heading text-2xl text-foreground">4. Your Rights</h2>
                 <p>
-                  We may use cookies to enhance your experience on our site. You can choose to disable 
-                  cookies through your browser settings, though this may affect some functionality.
+                  Depending on your location and applicable laws, you have the right to:
+                </p>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Access your personal data</li>
+                  <li>Request correction or updates</li>
+                  <li>Request deletion of your data</li>
+                  <li>Restrict or object to data processing</li>
+                  <li>Request data portability</li>
+                  <li>Withdraw consent at any time</li>
+                </ul>
+                <p className="italic text-sm text-muted-foreground">
+                  To exercise any of these rights, please contact us using the details provided below.
                 </p>
               </section>
 
               <section className="space-y-4">
-                <h2 className="font-heading text-2xl text-foreground">6. Your Rights</h2>
+                <h2 className="font-heading text-2xl text-foreground">5. Links to External Websites</h2>
                 <p>
-                  You have the right to access, update, or delete your personal information at any time. 
-                  Contact us at hello@verdantoracle.com to exercise these rights.
+                  Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites. We encourage you to review their privacy policies when you leave our website.
                 </p>
               </section>
 
               <section className="space-y-4">
-                <h2 className="font-heading text-2xl text-foreground">7. Contact Us</h2>
+                <h2 className="font-heading text-2xl text-foreground">6. Information Security</h2>
                 <p>
-                  If you have any questions about this Privacy Policy, please contact us at:
+                  We implement appropriate administrative, technical, and physical security measures to protect your personal data from unauthorized access, misuse, alteration, or disclosure.
                 </p>
-                <p className="text-foreground font-medium">
-                  hello@verdantoracle.com
+                <p className="italic text-sm text-muted-foreground">
+                  While we take every reasonable step to secure your data, no method of internet transmission is 100% secure.
                 </p>
+              </section>
+
+              <section className="space-y-4">
+                <h2 className="font-heading text-2xl text-foreground">7. Legal Disclosure</h2>
+                <p>
+                  We may disclose your information if required by law, court order, or government authority, or when we believe disclosure is necessary to protect our rights, users, or comply with legal obligations.
+                </p>
+              </section>
+
+              <section className="space-y-4">
+                <h2 className="font-heading text-2xl text-foreground">8. Contact Us</h2>
+                <p>
+                  If you have any questions about this Privacy Policy or your personal data, please contact:
+                </p>
+                <div className="mt-4 space-y-2">
+                  <p className="font-medium text-foreground">Mansi Saxena</p>
+                  <p className="font-medium text-foreground">Celestial Visionn</p>
+                  <p className="text-foreground">
+                  <strong>celestialvisionn@gmail.com</strong>
+                  </p>
+                </div>
               </section>
             </div>
           </motion.div>
