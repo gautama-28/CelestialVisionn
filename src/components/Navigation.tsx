@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -13,6 +13,7 @@ const navLinks = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -30,6 +31,21 @@ export function Navigation() {
 
   return (
     <>
+      {/* Logo - Outside Capsule, Top Left */}
+      <motion.button
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        onClick={() => navigate('/')}
+        className="fixed top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8 z-50 p-0 bg-transparent border-0 hover:opacity-80 transition-opacity"
+      >
+        <img
+          src="/CelestialVisonnLogoDark.png"
+          alt="Celestial Visonn Logo"
+          className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain cursor-pointer"
+        />
+      </motion.button>
+
       {/* Desktop & Tablet - Sticky Capsule */}
       <motion.nav
         initial={{ y: -100 }}
@@ -77,19 +93,15 @@ export function Navigation() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="md:hidden absolute top-0 left-0 right-0 z-50"
+        className="md:hidden fixed top-4 right-4 z-50"
       >
-        <div className="px-4 py-4 max-w-full">
-          <div className="flex items-center justify-end">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg bg-primary backdrop-blur-xl border border-cream/20 text-cream shadow-soft"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 rounded-lg bg-primary backdrop-blur-xl border border-cream/20 text-cream shadow-soft"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </motion.div>
 
       {/* Mobile Menu */}

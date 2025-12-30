@@ -24,20 +24,6 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Logo */}
-      <motion.div
-        initial={{ opacity: 0, x: -10 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="absolute top-6 left-4 md:top-6 md:left-6 lg:top-7 lg:left-12 xl:top-8 xl:left-16 z-10"
-      >
-        <img
-          src="/CelestialVisonnLogoDark.png"
-          alt="Celestial Visonn Logo"
-          className="h-10 sm:h-12 md:h-12 lg:h-14 xl:h-16 w-auto object-contain max-w-[120px] sm:max-w-none"
-        />
-      </motion.div>
-
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div

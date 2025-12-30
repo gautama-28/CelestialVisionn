@@ -73,6 +73,13 @@ export function FooterSection() {
                 <Mail size={16} />
                 tarotwithmansi@gmail.com
               </a>
+              <a
+                href="mailto:hello@verdantoracle.com"
+                className="flex items-center gap-2 text-cream hover:text-gold transition-colors group"
+              >
+                <Mail size={16} />
+                tarotwithmansi@gmail.com
+              </a>
             </div>
 
             {/* Social & Legal */}

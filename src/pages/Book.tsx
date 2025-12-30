@@ -62,20 +62,22 @@ export default function Book() {
 
   return (
     <div className="min-h-screen bg-cream">
-      {/* Logo */}
-      <motion.button
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="absolute top-6 left-3 md:top-4 md:left-8 lg:left-16 z-10 p-0 border-0 bg-transparent hover:opacity-80 transition-opacity"
-        onClick={() => navigate('/')}
-      >
-        <img
-          src="/CelestialVisonnLogoDark.png"
-          alt="Celestial Visonn Logo"
-          className="h-8 sm:h-12 md:h-16 w-auto object-contain cursor-pointer"
-        />
-      </motion.button>
+      <div className="sticky top-0 z-[9999]">
+        {/* Logo Navigation */}
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          onClick={() => navigate('/')}
+          className="absolute top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8 p-0 bg-transparent border-0 hover:opacity-80 transition-opacity cursor-pointer w-fit"
+        >
+          <img
+            src="/CelestialVisonnLogoDark.png"
+            alt="Celestial Visonn Logo"
+            className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain"
+          />
+        </motion.button>
+      </div>
 
       <main className="section-padding">
         <div className="container-narrow">
