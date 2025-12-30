@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Mail, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, Link } from 'react-router-dom';
 import footerBG from '/footerBG.png';
@@ -74,12 +74,13 @@ export function FooterSection() {
                 tarotwithmansi@gmail.com
               </a>
               <a
-                href="mailto:hello@verdantoracle.com"
-                className="flex items-center gap-2 text-cream hover:text-gold transition-colors group"
+                href="tel:+918743907967"
+                className="flex items-center gap-2 text-cream hover:text-gold transition-colors group mt-2"
               >
-                <Mail size={16} />
-                tarotwithmansi@gmail.com
+                <Phone size={16} />
+                +91 8743907967
               </a>
+              
             </div>
 
             {/* Social & Legal */}
