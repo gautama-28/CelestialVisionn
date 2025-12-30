@@ -16,17 +16,17 @@ export function AboutSection() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="relative order-2 lg:order-1"
+            className="relative order-2 lg:order-1 px-4 sm:px-0"
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-sage/30 rounded-lg -rotate-3" />
+            <div className="relative max-w-md mx-auto">
+              <div className="absolute -inset-2 sm:-inset-4 bg-sage/30 rounded-lg -rotate-3" />
               <img
                 src={portraitImage}
                 alt="The Verdant Oracle practitioner in natural setting"
                 className="relative rounded-lg w-full aspect-[3/4] object-cover border border-border"
               />
-              <div className="absolute -bottom-4 -right-4 bg-forest text-cream px-6 py-3 rounded-lg">
-                <span className="font-heading italic text-lg">Est. 2019</span>
+              <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4 bg-forest text-cream px-4 sm:px-6 py-2 sm:py-3 rounded-lg">
+                <span className="font-heading italic text-base sm:text-lg">Est. 2019</span>
               </div>
             </div>
           </motion.div>
@@ -52,7 +52,7 @@ export function AboutSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-border">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-10 pt-10 border-t border-border">
               {[
                 { number: '2000+', label: 'Sessions' },
                 { number: '6', label: 'Years' },
@@ -65,10 +65,10 @@ export function AboutSection() {
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="font-heading text-3xl md:text-4xl text-forest mb-1">
+                  <div className="font-heading text-2xl sm:text-3xl md:text-4xl text-forest mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-muted-foreground tracking-wide-premium uppercase">
+                  <div className="text-xs sm:text-sm text-muted-foreground tracking-wide-premium uppercase">
                     {stat.label}
                   </div>
                 </motion.div>

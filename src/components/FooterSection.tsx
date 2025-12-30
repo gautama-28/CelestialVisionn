@@ -31,12 +31,12 @@ export function FooterSection() {
           </p>
           <Button
             variant="sage"
-            size="xl"
-            className="rounded-lg"
+            size="lg"
+            className="rounded-lg w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8"
             onClick={() => navigate('/book')}
           >
             Schedule Your Consultation
-            <ArrowUpRight size={18} />
+            <ArrowUpRight className="ml-1" size={18} />
           </Button>
         </motion.div>
       </div>

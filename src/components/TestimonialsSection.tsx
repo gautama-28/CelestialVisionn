@@ -6,18 +6,18 @@ import { Quote } from 'lucide-react';
 const testimonials = [
   {
     quote: "A transformative experience that felt more like a strategy session than a reading. The insights I gained helped me navigate a pivotal career transition with confidence.",
-    author: "Elena R.",
+    author: "Nikita",
     title: "Executive",
   },
   {
     quote: "The most professional and grounded approach to tarot I have ever encountered. It's clear that this practice is rooted in deep respect and genuine expertise.",
-    author: "Marcus T.",
+    author: "Jessica Singh",
     title: "Designer",
   },
   {
     quote: "I was skeptical at first, but the crystal consultation for my home office has genuinely shifted my energy and focus. A truly bespoke experience.",
-    author: "Sophia L.",
-    title: "Entrepreneur",
+    author: "Aditi Mishra",
+    title: "Student",
   },
 ];
 

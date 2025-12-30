@@ -16,12 +16,12 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 lg:pt-28">
       {/* Background Image */}
       <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-tarot-cream via-tarot-sand to-tarot-warm" />
         <img
           src={heroImage}
           alt="Ethereal forest ferns in soft morning light"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest/40 via-forest/30 to-forest/60" />
       </div>
 
       {/* Logo */}
@@ -32,7 +32,7 @@ export function HeroSection() {
         className="absolute top-6 left-4 md:top-6 md:left-6 lg:top-7 lg:left-12 xl:top-8 xl:left-16 z-10"
       >
         <img
-          src="/CelestialVisonnLogo.png"
+          src="/CelestialVisonnLogoDark.png"
           alt="Celestial Visonn Logo"
           className="h-10 sm:h-12 md:h-12 lg:h-14 xl:h-16 w-auto object-contain max-w-[120px] sm:max-w-none"
         />
@@ -46,7 +46,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.3 }}
           className="mb-6"
         >
-          <span className="inline-block text-xs sm:text-sm font-body tracking-wide-premium uppercase text-cream/80 border border-cream/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+          <span className="inline-block text-xs sm:text-sm font-body tracking-wide-premium uppercase text-tarot-terracotta/80 border border-tarot-terracotta/30 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-background/50 backdrop-blur-sm">
             Tarot & Crystal Consultancy
           </span>
         </motion.div>
@@ -55,18 +55,18 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream mb-6 leading-tight"
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground mb-6 leading-tight"
         >
           Find peace of mind and
           <br />
-          <span className="italic text-gold">know yourself better.</span>
+          <span className="italic text-tarot-terracotta">know yourself better.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
-          className="font-body text-base md:text-lg text-cream max-w-xl md:max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed drop-shadow-md"
+          className="font-body text-base md:text-lg text-muted-foreground max-w-xl md:max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed"
         >
           I answered more than 2,000+ questions in past years, helping people to know the insights of their future.
         </motion.p>
@@ -78,7 +78,7 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
         >
           <Button
-            variant="sage"
+            variant="default"
             size="lg"
             className="rounded-lg shadow-medium md:h-14 md:px-10 md:text-base"
             onClick={() => navigate('/book')}
@@ -88,7 +88,7 @@ export function HeroSection() {
           <Button
             variant="cream-outline"
             size="lg"
-            className="rounded-lg border-cream/40 hover:border-cream md:h-14 md:px-10 md:text-base"
+            className="text-tarot-terracotta/60 hover:text-tarot-terracotta transition-colors rounded-lg md:h-14 md:px-10 md:text-base"
             onClick={() => scrollToSection('#about')}
           >
             Learn More

@@ -66,7 +66,7 @@ export function ServicesSection() {
               className="group relative bg-cream rounded-2xl border border-border p-8 md:p-10 hover:shadow-medium transition-all duration-500 overflow-hidden"
             >
               {/* Tarot Card Image */}
-              <div className="absolute md:-top-6 md:-right-6 w-32 h-44 md:w-48 md:h-64 opacity-40 group-hover:opacity-60 transition-opacity duration-300">
+              <div className="absolute top-0 right-0 md:-top-6 md:-right-6 w-24 h-36 md:w-48 md:h-64 opacity-30 md:opacity-40 group-hover:opacity-60 transition-opacity duration-300">
                 <img 
                   src={service.image}
                   alt={service.title}

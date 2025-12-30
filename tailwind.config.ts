@@ -55,6 +55,14 @@ export default {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
         },
+        // Tarot theme colors
+        tarot: {
+          cream: "hsl(var(--tarot-cream))",
+          sand: "hsl(var(--tarot-sand))",
+          warm: "hsl(var(--tarot-warm))",
+          terracotta: "hsl(var(--tarot-terracotta))",
+          brown: "hsl(var(--tarot-brown))",
+        },
       },
       fontFamily: {
         heading: ["Playfair Display", "serif"],
