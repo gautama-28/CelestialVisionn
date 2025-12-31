@@ -37,7 +37,7 @@ export function GallerySection() {
             The Aesthetic
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            A glimpse into the world of The Verdant Oracle—where nature meets intention.
+            A glimpse into the world of Celestial Visionn where nature meets intention.
           </p>
         </motion.div>
 

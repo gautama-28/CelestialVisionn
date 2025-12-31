@@ -22,7 +22,7 @@ export function AboutSection() {
               <div className="absolute -inset-2 sm:-inset-4 bg-sage/30 rounded-lg -rotate-3" />
               <img
                 src={portraitImage}
-                alt="The Verdant Oracle practitioner in natural setting"
+                alt="Practitioner in natural setting"
                 className="relative rounded-lg w-full aspect-[3/4] object-cover border border-border"
               />
               <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4 bg-forest text-cream px-4 sm:px-6 py-2 sm:py-3 rounded-lg">

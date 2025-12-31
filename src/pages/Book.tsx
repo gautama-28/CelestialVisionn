@@ -286,6 +286,7 @@ export default function Book() {
                       mode="single"
                       selected={selectedDate}
                       onSelect={setSelectedDate}
+                      disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
                       initialFocus
                     />
                   </PopoverContent>
