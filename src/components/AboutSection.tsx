@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import portraitImage from '@/assets/practitioner-portrait2.png';
+
+const portraitImage = 'https://ik.imagekit.io/j3wlbkiu2/practitioner-portrait2.png';
 
 export function AboutSection() {
   const ref = useRef(null);
@@ -26,7 +27,7 @@ export function AboutSection() {
                 className="relative rounded-lg w-full aspect-[3/4] object-cover border border-border"
               />
               <div className="absolute -bottom-2 sm:-bottom-4 -right-2 sm:-right-4 bg-forest text-cream px-4 sm:px-6 py-2 sm:py-3 rounded-lg">
-                <span className="font-heading italic text-base sm:text-lg">Est. 2019</span>
+                <span className="font-heading italic text-base sm:text-lg">Est. 2015</span>
               </div>
             </div>
           </motion.div>
@@ -55,7 +56,7 @@ export function AboutSection() {
             <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-10 pt-10 border-t border-border">
               {[
                 { number: '2000+', label: 'Sessions' },
-                { number: '6', label: 'Years' },
+                { number: '10', label: 'Years' },
                 { number: '100%', label: 'Confidential' },
               ].map((stat, index) => (
                 <motion.div

@@ -4,7 +4,8 @@ import { useRef } from 'react';
 import { Mail, Phone, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, Link } from 'react-router-dom';
-import footerBG from '/footerBG.png';
+
+const footerBG = 'https://ik.imagekit.io/j3wlbkiu2/footerBG.png';
 
 export function FooterSection() {
   const ref = useRef(null);

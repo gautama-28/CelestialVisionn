@@ -40,7 +40,7 @@ export function Navigation() {
         className="fixed top-4 left-4 md:top-6 md:left-6 lg:top-8 lg:left-8 z-50 p-0 bg-transparent border-0 hover:opacity-80 transition-opacity"
       >
         <img
-          src="/CelestialVisonnLogoDark.png"
+          src="https://ik.imagekit.io/j3wlbkiu2/CelestialVisonnLogoDark.png"
           alt="Celestial Visonn Logo"
           className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain cursor-pointer"
         />

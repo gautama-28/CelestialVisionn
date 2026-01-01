@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-forest-ferns.png';
 import { useNavigate } from 'react-router-dom';
+
+const heroImage = 'https://ik.imagekit.io/j3wlbkiu2/hero-forest-ferns.png';
 
 export function HeroSection() {
   const navigate = useNavigate();

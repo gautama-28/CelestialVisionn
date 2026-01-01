@@ -16,7 +16,7 @@ export function FloatingWhatsAppButton() {
       className="fixed bottom-3 left-3 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8 z-50 flex items-center justify-center h-10 sm:h-11 w-10 sm:w-11 rounded-full hover:scale-110 transition-transform shadow-medium pointer-events-auto"
     >
       <img
-        src="/whatsapp-icon.png"
+        src="https://ik.imagekit.io/j3wlbkiu2/whatsapp-icon.png"
         alt="WhatsApp"
         className="w-full h-full object-contain"
       />

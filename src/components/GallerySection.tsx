@@ -2,18 +2,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-import gallery1 from '@/assets/gallery-crystals.jpg';
-import gallery2 from '@/assets/gallery-tarot.jpg';
-import gallery3 from '@/assets/gallery-botanical.jpg';
-import gallery4 from '@/assets/gallery-stones.jpg';
-import gallery5 from '@/assets/gallery-candles.jpg';
-
 const galleryImages = [
-  { src: gallery1, alt: 'Dark green crystals and minerals', span: 'row-span-2' },
-  { src: gallery2, alt: 'Vintage tarot deck with gold edges', span: '' },
-  { src: gallery3, alt: 'Moody botanical interior', span: '' },
-  { src: gallery4, alt: 'Curated crystal collection', span: '' },
-  { src: gallery5, alt: 'Ritual candles and natural elements', span: '' },
+  { src: 'https://ik.imagekit.io/j3wlbkiu2/gallery-crystals.jpg', alt: 'Dark green crystals and minerals', span: 'row-span-2' },
+  { src: 'https://ik.imagekit.io/j3wlbkiu2/gallery-tarot.jpg', alt: 'Vintage tarot deck with gold edges', span: '' },
+  { src: 'https://ik.imagekit.io/j3wlbkiu2/gallery-botanical.jpg', alt: 'Moody botanical interior', span: '' },
+  { src: 'https://ik.imagekit.io/j3wlbkiu2/gallery-stones.jpg', alt: 'Curated crystal collection', span: '' },
+  { src: 'https://ik.imagekit.io/j3wlbkiu2/gallery-candles.jpg', alt: 'Ritual candles and natural elements', span: '' },
 ];
 
 export function GallerySection() {
